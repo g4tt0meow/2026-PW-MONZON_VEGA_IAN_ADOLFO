@@ -61,3 +61,47 @@ footer{
 .tarjeta a:hover {
     text-decoration: underline;
 }
+
+.formulario-registro {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    background-color: #e4e4e4;
+}
+
+label {
+    margin: 0.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+input {
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+    width: 20rem;
+}
+
+.formulario-registro button {
+    padding: 0.5rem;
+    margin: 1.5rem;
+    border: 0rem;
+    border-radius: .2rem;
+    background-color: rgb(40, 210, 40);
+}
+
+.formulario-registro button:hover {
+    background-color: rgb(47, 184, 47);
+}
+
+.formulario-registro.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.formulario-registro input:invalid {
+  background-color: #fffad8;   
+}
+
+.formulario-registro input:valid {
+    background-color: #f5fffc;
+}
