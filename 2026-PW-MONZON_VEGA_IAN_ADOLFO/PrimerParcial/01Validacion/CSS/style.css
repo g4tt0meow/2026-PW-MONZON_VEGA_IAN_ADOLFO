@@ -1,27 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: system-ui, Arial, sans-serif;
-    color: black;
+    color: #1f2937;
+    background-color: #f9fafb;
 }
 
 header {
     background-color: #0f172a;
-    color: white;
+    color: #ffffff;
     padding: 1.5rem;
     text-align: center;
 }
 
-header a{
-    color: white;
+header a {
+    color: #ffffff;
 }
 
 main{
     max-width: 960px;
     margin: 0 auto;
-
+    padding: 1.5rem;
 }
 
-footer {
+footer{
     text-align: center;
     padding: 1rem;
     color: #6b7280;
@@ -33,23 +38,23 @@ footer {
 .catalogo {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .tarjeta {
     padding: 1rem;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
-    background-color: white;
+    background-color: #ffffff;
 }
 
-.tarjeta h2{
-    margin: 0;
+.tarjeta h2 {
+    margin-top:0;
     font-size: 1.1rem;
 }
 
 .tarjeta a {
-    color: #0f172a;
+    color:#0f172a;
     text-decoration: none;
 }
 
