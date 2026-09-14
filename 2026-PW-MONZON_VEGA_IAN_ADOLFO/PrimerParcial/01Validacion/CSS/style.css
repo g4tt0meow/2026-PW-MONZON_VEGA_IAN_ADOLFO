@@ -6,7 +6,7 @@ body {
     margin: 0;
     font-family: system-ui, Arial, sans-serif;
     color: #1f2937;
-    background-color: #f9fafb;
+    background-color: #000000;
 }
 
 header {
@@ -66,12 +66,13 @@ footer{
     text-align: center;
     padding: 2rem;
     border-radius: 0.6rem;
-    background-color: #e4e4e4;
+    background-color: #212121;
 }
 
 label {
     margin: 0.5rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
 
 }
 
@@ -79,6 +80,7 @@ input {
     margin: 0.5rem;
     border-radius: 0.3rem;
     width: 20rem;
+    color: white;
 }
 
 .formulario-registro button {
@@ -99,9 +101,13 @@ input {
 }
 
 .formulario-registro input:invalid {
-  background-color: #fffad8;   
+  background-color: #fffef9;   
 }
 
 .formulario-registro input:valid {
-    background-color: #f5fffc;
+    background-color: #f5fffe;
+}
+
+.titulo-registro {
+    color: #e5e7eb;
 }
