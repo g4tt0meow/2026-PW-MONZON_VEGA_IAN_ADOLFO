@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    color: #1f2937;
+    background-color: #000000;
+}
+
+header {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+header a {
+    color: #ffffff;
+}
+
+main{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+footer{
+    text-align: center;
+    padding: 1rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* Catalogo de Talleres */
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.tarjeta {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+}
+
+.tarjeta h2 {
+    margin-top:0;
+    font-size: 1.1rem;
+}
+
+.tarjeta a {
+    color:#0f172a;
+    text-decoration: none;
+}
+
+.tarjeta a:hover {
+    text-decoration: underline;
+}
+
+.formulario-registro {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    background-color: #212121;
+}
+
+label {
+    margin: 0.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+
+}
+
+input {
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+    width: 20rem;
+    color: white;
+}
+
+.formulario-registro button {
+    padding: 0.5rem;
+    margin: 1.5rem;
+    border: 0rem;
+    border-radius: .2rem;
+    background-color: rgb(40, 210, 40);
+}
+
+.formulario-registro button:hover {
+    background-color: rgb(47, 184, 47);
+}
+
+.formulario-registro.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.formulario-registro input:invalid {
+  background-color: #fffef9;   
+}
+
+.formulario-registro input:valid {
+    background-color: #f5fffe;
+}
+
+.titulo-registro {
+    color: #e5e7eb;
+}
