@@ -1,30 +1,50 @@
+function pintarTabla(){
+const cuerpoTabla = document.querySelector('#tabla-talleres tbody');
+cuerpoTabla.innerHTML = '';
 
-const talleres = [
-  { nombre: 'Introducción a Python', instructor: 'Ing. María López', cupo: 25, inscritos: 25 },
-  { nombre: 'Fundamentos de Redes', instructor: 'Ing. Carlos Ramírez', cupo: 30, inscritos: 18 },
-  { nombre: 'Diseño de Bases de Datos', instructor: 'Ing. Ana Torres', cupo: 20, inscritos: 20 },
-  { nombre: 'Desarrollo Web con JS', instructor: 'Ing. María López', cupo: 25, inscritos: 10 },
-];
-
-function printarTabla(){
-    //debe obtener la table y rellenar con los datos de talleres
+talleres.forEach((t) => {
+    cuerpoTabla.innerHTML += `
+    <tr>
+        <td>${t.nombre}</td>
+        <td>${t.instructor}</td>
+        <td>${t.cupo}</td>
+        <td>${t.inscritos}</td>
+    </tr>`;
+});
 }
 
-const formArreglos = document.getElementById('form-arreglos');
+const formArreglos = document.getElementById('formulario-arreglos');
 const resultadoArreglos = document.getElementById('resultado-arreglo');
 const selectOperacionArreglo = document.getElementById('operacion-arreglo');
 
 formArreglos.addEventListener('submit', (evento) => {
-    evento.preventDefault();
-    const operacion = selectOperacionArreglo.nodeValue;
+        evento.preventDefault();
+        const operacion = selectOperacionArreglo.value;
 
-    let resultado;
+        let resultado;
 
-    switch(operacion){
-        case 'forEach':
+        switch(operacion){
+            case 'forEach' :
             resultado = talleres.map((t) => `- ${t.nombre} (${t.inscritos}/${t.cupo})`).join('\n');
             break;
-    }
+        case 'map' :
+            resultado = nombres.join('\n');
+            break;
+        case 'filter' :
+            resultado = llenos.map((t) => t.nombre).join('\n');
+            break;
+        case 'find' :
+            resultado = tallerMaria.nombre;
+            break;
+        case 'reduce' :
+            resultado = totalInscritos;
+            break;
+        case 'disponibles' :
+            resultado = talleresDisponibles.join('\n');
+                break;
+        }
 
-    resultadoArreglos.textContent = resultado;
+        resultadoArreglos.textContent = resultado;
 })
+
+    pintarTabla();

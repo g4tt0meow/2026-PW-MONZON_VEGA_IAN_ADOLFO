@@ -10,21 +10,31 @@ const talleres = [
 ];
 
 // TODO: forEach — imprime "- <nombre> (<inscritos>/<cupo>)" de cada taller
-console.log("Aplicandoo un forEach para imprimir los talleres:");
-talleres.forEach((t) => console.log(`- ${t.nombre} (${t.inscritos}/${t.cupo})`));
+console.log("Aplicando un ForEach para imprimir  ")
+talleres.forEach((t) => console.log (`- ${t.nombre} (${t.inscritos}/${t.cupo})`));
 
 // TODO: map — crea un arreglo `nombres` solo con los nombres de los talleres
-console.log("Aplicando funcion Map con solo Nombres")
-const nombres = talleres.map((t) => t.nombre);
+console.log("Aplicando funcion Map con Solo Nombres")
+const nombres = talleres.map ((t) => t.nombre);
 console.log(nombres);
 
 // TODO: filter — crea un arreglo `llenos` con los talleres donde inscritos >= cupo
-console.log("Aplicando la función Filter en los talleres")
-const lleno = talleres.filter((t) => t.inscritos >= t.cupo);
-console.log(llenos.map((t) => t.nombre))
-
+console.log ("Aplicando la funcion Filter en los talleres")
+const llenos = talleres.filter((t) => t.inscritos >= t.cupo);
+console.log (llenos.map((t) => t.nombre));
 // TODO: find — encuentra el PRIMER taller impartido por 'Ing. María López'
+console.log("Aplicando la funcion Find para buscar por instructor")
+const tallerMaria = talleres.find((t) => t.instructor === 'Ing. María López');
+console.log(tallerMaria);
 
 // TODO: reduce — calcula `totalInscritos`, la suma de inscritos de todos los talleres
+console.log("Aplicando la funcion Reduce para sumar inscritos")
+const totalInscritos = talleres.reduce((total, t) => total + t.inscritos, 0);
+console.log(totalInscritos);
 
 // TODO: filter + map encadenados — nombres de los talleres que SÍ tienen cupo disponible
+console.log("Aplicando Filter y Map para talleres con cupo disponible")
+const talleresDisponibles = talleres
+  .filter((t) => t.inscritos < t.cupo)
+  .map((t) => t.nombre);
+console.log(talleresDisponibles);
