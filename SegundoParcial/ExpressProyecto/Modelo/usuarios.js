@@ -1,4 +1,4 @@
-const pool = requiere('../db-local');
+const pool = require('../db-local');
 //pregunta que es pool? en lugar de abrir o cerrar consulta es lento
 const COLUMNAS_PUBLICAS = 'id, nombre, correo, boleta, rol';
 
@@ -27,7 +27,8 @@ async function actualizar(id, {nombre, correo, rol}) {
     const cambios = Object.entries({nombre, correo, rol}).filter(([, valor]) => valor !== undefined);
     if(cambios.length === 0) return obtenerPorId(id);
 
-    const columnas = cambios.map(([columna]) => `${columnas} WHERE id = ?`, [...cambios.map(([, valor]) => valor), id]);
+    const columnas = cambios.map(([columna]) => `${columna} = ?`).join(', ');
+    const [info] = await pool.query(`UPDATE usuarios SET ${columnas} WHERE id = ?`, [...cambios.map(([, valor]) => valor), id]);
     if(info.affectedRows === 0) return undefined;
     return obtenerPorId(id);
 }
@@ -44,5 +45,14 @@ async function buscarPorCorreoConHash(correo) {
     return filas[0];
 }
 
+//buscar por boleta (para inscribir desde el front)
+async function buscarPorBoleta(boleta) {
+    const [filas] = await pool.query(
+        `SELECT id, nombre, correo, boleta, rol FROM usuarios WHERE boleta = ?`,
+        [boleta]
+    );
+    return filas[0];
+}
+
 //siempre es necesario exportar las funciones para poder crear su api
-module.exports = {listar, obtenerPorId, crear, actualizar, eliminar, buscarPorCorreoConHash};
+module.exports = {listar, obtenerPorId, crear, actualizar, eliminar, buscarPorCorreoConHash, buscarPorBoleta};

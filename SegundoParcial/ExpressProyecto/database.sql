@@ -1,9 +1,13 @@
+-- la mierda de base de datos
 
-CREATE DATABASE IF NOT EXISTS 
+-- Crear la base de datos (ejecutar esto primero en MySQL/MariaDB)
+CREATE DATABASE IF NOT EXISTS mierda_batiz
     CHARACTER SET utf8mb4
+    -- esto es para que acepte emojis
     COLLATE utf8mb4_unicode_ci;
+    -- pa que la meirda al momento de buscar busque chido ahi dice ci es case insensitive
 
-USE cecyt9_local;
+USE mierda_batiz;
 
 
 -- usuarios
@@ -17,6 +21,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
     contrasena_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
+-- esta madre de inno es el tipo de formato en el que la gaurda sirve mucho pa forain keys y mas mamadas
+-- tambien pa que no se sature y la mamada lo habi explicado bien antes pero se me borro la pinche base
+-- alch que puta hueva volver a explicar
 
 
 -- talleres
@@ -36,7 +43,9 @@ CREATE TABLE IF NOT EXISTS talleres (
 
 CREATE TABLE IF NOT EXISTS asistencias (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
+    usuario_id INT NULL,
+    nombre_alumno VARCHAR(100) NULL,
+    boleta VARCHAR(10) NULL,
     taller_id INT NOT NULL,
     fecha_asistencia TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -67,7 +76,7 @@ INSERT INTO talleres (nombre, descripcion, instructor, fecha, cupo) VALUES
     ('Bases de Datos MySQL', 'Administración y consultas en bases de datos relacionales', 'Ing. Roberto Silva', '2026-05-20', 25),
     ('Programación en JavaScript', 'Lenguaje de programación para web interactiva', 'Ing. Patricia Cruz', '2026-06-05', 30);
 
-
+    -- la de talleres alch saque del primer parcial le habia puesto cosas distintas pero alch que pinche hueva cuando repites lo mismo
 
 INSERT INTO asistencias (usuario_id, taller_id) VALUES
     (2, 1),
@@ -80,3 +89,10 @@ INSERT INTO asistencias (usuario_id, taller_id) VALUES
     (6, 6),
     (8, 3),
     (8, 4);
+    -- esto es pura pinche llave foranea lo explicaria bien pero se me borro y alch no quiero volverlo a explicas digamos que mejor
+    -- ponte a pensar dice usuario y taller el primer numero es usuario el segundo taller ya no es muy dificil sirve por si cambia la
+    -- la mierda de arriba 
+
+
+-- Fin de la mierda esta
+-- ya se le voy a poner a la mierba basa mierda_batiz xDDDDDDDDD
