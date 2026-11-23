@@ -1,24 +1,23 @@
-// Fechas en español sin el corrimiento de un día que provoca new Date('YYYY-MM-DD').
 export function formatearFecha(fecha) {
-  if (!fecha) return '';
-  return new Date(`${fecha}T12:00:00`).toLocaleDateString('es-MX', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+    if (!fecha) return 'Fecha por confirmar';
+
+    const texto = String(fecha);
+    const partes = texto.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    const valor = partes
+        ? new Date(Number(partes[1]), Number(partes[2]) - 1, Number(partes[3]))
+        : new Date(texto);
+
+    if (Number.isNaN(valor.getTime())) return 'Fecha por confirmar';
+
+    return new Intl.DateTimeFormat('es-MX', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    }).format(valor);
 }
 
-// true si la fecha ya pasó (comparando contra hoy a medianoche).
-export function yaPaso(fecha) {
-  if (!fecha) return false;
-  const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0);
-  return new Date(`${fecha}T12:00:00`) < hoy;
-}
-
-// La boleta es un dato personal: solo se muestran los últimos 4 dígitos.
 export function ocultarBoleta(boleta) {
-  if (!boleta) return '';
-  return `******${String(boleta).slice(-4)}`;
+    const texto = String(boleta ?? '');
+    return `${'*'.repeat(Math.max(0, texto.length - 4))}${texto.slice(-4)}`;
 }

@@ -4,6 +4,13 @@
   gap: 16px;
 }
 
+.buscador {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
 .panel {
   margin-bottom: 24px;
   padding: 16px;
@@ -26,6 +33,7 @@
 .relleno {
   height: 100%;
   background: #6b1d3a;
+  transition: width 0.2s ease;
 }
 
 .lleno {
@@ -34,6 +42,8 @@
 }
 
 .volver {
+  display: inline-block;
+  margin-bottom: 12px;
   color: #6b1d3a;
   font-weight: 600;
 }
@@ -41,13 +51,6 @@
 .exito {
   color: #166534;
   font-weight: 600;
-}
-
-.buscador {
-  width: 100%;
-  max-width: 360px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
 }
 
 .lista {
@@ -61,4 +64,18 @@
 .lista a {
   color: #6b1d3a;
   font-weight: 600;
+}
+
+.tabla {
+  margin-top: 12px;
+}
+
+.tabla th {
+  background: #f3e8ee;
+}
+
+@media (max-width: 560px) {
+  .rejilla {
+    grid-template-columns: 1fr;
+  }
 }

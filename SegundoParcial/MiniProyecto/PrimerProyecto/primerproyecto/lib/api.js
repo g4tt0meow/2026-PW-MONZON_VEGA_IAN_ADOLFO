@@ -1,31 +1,36 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-const BACKEND_CAIDO = 'El backend no responde. Arráncalo con npm start en el puerto 4000.';
+const BACKEND_CAIDO = 'El backend no responde. Revisa que Express esté ejecutándose en el puerto 4000.';
 
 export async function pedirJSON(ruta, opciones = {}) {
-  let res;
-  try {
-    res = await fetch(`${API_URL}/api${ruta}`, {
-      ...opciones,
-      headers: { 'Content-Type': 'application/json', ...opciones.headers },
-    });
-  } catch {
-    // Sin proxy (NEXT_PUBLIC_API_URL) y con el backend apagado, fetch falla
-    // antes de recibir respuesta.
-    throw new Error(BACKEND_CAIDO);
-  }
+    let respuesta;
 
-  // Un 204 no trae cuerpo, y con el backend apagado el proxy de Next responde
-  // 500 en texto, no en JSON.
-  let datos = null;
-  try {
-    datos = await res.json();
-  } catch {
-    datos = null;
-  }
+    try {
+        respuesta = await fetch(`/api${ruta}`, {
+            ...opciones,
+            headers: {
+                'Content-Type': 'application/json',
+                ...opciones.headers,
+            },
+        });
+    } catch {
+        throw new Error(BACKEND_CAIDO);
+    }
 
-  if (!res.ok) {
-    if (datos && datos.error) throw new Error(datos.error);
-    throw new Error(res.status === 500 ? BACKEND_CAIDO : `El backend respondió ${res.status}`);
-  }
-  return datos;
+    let datos = null;
+    try {
+        datos = await respuesta.json();
+    } catch {
+        datos = null;
+    }
+
+    if (!respuesta.ok) {
+        if (datos && datos.error) {
+            throw new Error(datos.error);
+        }
+        if (respuesta.status >= 500) {
+            throw new Error(BACKEND_CAIDO);
+        }
+        throw new Error(`El backend respondió ${respuesta.status}.`);
+    }
+
+    return datos;
 }
